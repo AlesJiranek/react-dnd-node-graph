@@ -20,7 +20,7 @@ class Graph extends React.Component {
     nodes: PropTypes.array.isRequired,
     nodeStyle: PropTypes.object,
     onNodeMove: PropTypes.func,
-    onAddConnector: PropTypes.func.isRequired,
+    onAddConnector: PropTypes.func,
     onRemoveConnector: PropTypes.func
   };
 
@@ -134,14 +134,15 @@ class Graph extends React.Component {
   }
 
 
-  endConnector(e, end) {
+  createConnector(e, end) {
     let state = this.state;
     const {newConnectorStart: start} = state;
     if (!start) return;
 
     const {onAddConnector} = this.props;
 
-    onAddConnector({start, end});
+    if (typeof onAddConnector === 'function')
+      onAddConnector({start, end});
 
     state.newConnectorStart = null;
     state.mousePos = null;
@@ -242,7 +243,7 @@ class Graph extends React.Component {
           <Node
             {...{getNodeTitle, getPinTitle, node}}
             key={this.getNodeId(node)}
-            endConnector={(e, c) => this.endConnector(e, c)}
+            endConnector={(e, c) => this.createConnector(e, c)}
             getNodeId={n => this.getNodeId(n)}
             getPinId={p => this.getPinId(p)}
             nodeStyle={this.getNodeStyle(node)}

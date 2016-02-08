@@ -14,9 +14,15 @@ export default class App extends React.Component {
       ]},
       {id: 2, title: 'Node 2', pins: [
         {id: 1, title: 'Pin 1'},
-        {id: 2, title: 'Pin 2'}]
-      }];
-    const connectors = [{start: {nodeId: 1, pinId: 1}, end: {nodeId: 2, pinId: 1}}];
+        {id: 2, title: 'Pin 2'}
+      ]}
+    ];
+    const connectors = [
+      {
+        start: {nodeId: 1, pinId: 1},
+        end: {nodeId: 2, pinId: 1}
+      }
+    ];
 
     this.state = {nodes, connectors};
   }
@@ -50,9 +56,9 @@ export default class App extends React.Component {
 
 
   render() {
-    const {connectors, nodes} = this.state
+    const {connectors, nodes} = this.state;
 
-    const style={width: '100%', height: '1000px'};
+    const style = {width: '100%', height: '1000px'};
 
     return (
       <div>
