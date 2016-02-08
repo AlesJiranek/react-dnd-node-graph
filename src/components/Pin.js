@@ -55,13 +55,15 @@ export default class Pin extends React.Component {
 
     return (
       <div style={style}>
-        <span onMouseUp={e => this.endConnector(e)} style={{float: 'left', height: style.height, cursor: style.cursor}}>
+        <span className="rdng-pin-in" onMouseUp={e => this.endConnector(e)} style={{float: 'left', height: style.height, cursor: style.cursor}}>
            <svg height={style.height} width={style.height}>
             <circle r="4" fill="none" stroke="black" strokeWidth="1" cx={style.height / 2} cy={style.height / 2} />
           </svg>
         </span>
-        {this.getTitle()}
-        <span onMouseDown={e => this.startConnector(e)} style={{float: 'right', cursor: 'pointer', height: style.height}}>
+        <span className="rdng-pin-title">
+          {this.getTitle()}
+        </span>
+        <span className="rdng-pin-out" onMouseDown={e => this.startConnector(e)} style={{float: 'right', cursor: 'pointer', height: style.height}}>
           <svg height={style.height} width={style.height}>
             <circle r="4" fill="none" stroke="black" strokeWidth="1" cx={style.height / 2} cy={style.height / 2} />
           </svg>

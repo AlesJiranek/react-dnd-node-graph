@@ -48,8 +48,8 @@ export default class Connector extends React.Component {
 
     return (
       <g>
-        <circle cx={start.x} cy={start.y} r={style.r} fill={style.color} />
-        <circle cx={end.x} cy={end.y} r={style.r} fill={style.fill} />
+        <circle className="rdng-connector-start" cx={start.x} cy={start.y} r={style.r} fill={style.color} />
+        <circle className="rdng-connector-end" cx={end.x} cy={end.y} r={style.r} fill={style.fill} />
         <path d={this.getCurve(start, end)} fill="none" strokeWidth={style.width} stroke={style.color} style={{cursor: 'pointer'}} onMouseUp={() => this.removeConnector()} />
       </g>
     );
